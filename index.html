@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pokédex</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="dynamic-bg" class="background-layer"></div>
+
+    <header class="top-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🔴 Mi Pokédex</h1>
+            </div>
+            
+            <nav class="nav-links">
+                <!-- CORREGIDO: Las imágenes están en la carpeta img/ -->
+                <a href="#" id="nav-inicio" class="nav-item active" 
+                   style="--bg-image: url('img/Inicio.png')">
+                    Inicio
+                </a>
+                <a href="#" id="nav-pokemons" class="nav-item" 
+                   style="--bg-image: url('img/Pokemon.png')">
+                    Pokémon
+                </a>
+                <a href="#" id="nav-equipo" class="nav-item" 
+                   style="--bg-image: url('img/MiEquipo.png')">
+                    Mi Equipo
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="search-panel hidden-section" id="search-panel">
+            <input type="text" id="searchInput" placeholder="Buscar Pokémon (ej: pikachu, 25)...">
+            <button id="btnAsync" class="btn-elden">⚡ async/await</button>
+            <button id="btnThen" class="btn-elden">🔄 .then()</button>
+        </div>
+
+        <main class="content-area">
+            <div id="statusBar" class="status-bar hidden">
+                <span id="statusText">Estado: -</span>
+                <span id="timeText">Tiempo: -</span>
+                <span id="methodText">Método: -</span>
+            </div>
+
+            <section id="sec-inicio">
+                <div class="wiki-box">
+                    <h2 class="wiki-title">Bienvenido a tu Pokédex</h2>
+                    <p class="wiki-text">Usa el buscador superior para encontrar un Pokémon o navega usando los botones de arriba.</p>
+                    
+                    <div id="result" class="result-container">
+                        <div class="placeholder">
+                            <p>Los datos del Pokémon aparecerán aquí...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+               <section id="sec-pokemons" class="hidden-section">
+                <div class="wiki-box">
+                    <h2 class="wiki-title">📚 Lista de Pokémon</h2>
+                    
+                    <div class="gen-filters" id="gen-filters">
+                        <button class="gen-btn active" data-gen="1">Gen 1</button>
+                        <button class="gen-btn" data-gen="2">Gen 2</button>
+                        <button class="gen-btn" data-gen="3">Gen 3</button>
+                        <button class="gen-btn" data-gen="4">Gen 4</button>
+                        <button class="gen-btn" data-gen="5">Gen 5</button>
+                        <button class="gen-btn" data-gen="6">Gen 6</button>
+                        <button class="gen-btn" data-gen="7">Gen 7</button>
+                        <button class="gen-btn" data-gen="8">Gen 8</button>
+                        <button class="gen-btn" data-gen="9">Gen 9</button>
+                    </div>
+
+                    <div id="pokemon-list" class="pokemon-list-grid">
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-equipo" class="hidden-section">
+                <div class="wiki-box">
+                    <h2 class="wiki-title">⭐ Mi Equipo Guardado</h2>
+                    <div id="team-table-container">
+                        <p class="placeholder-small">Aún no has guardado Pokémon en tu equipo</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>Proyecto creado por <strong>Yader Mendez</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

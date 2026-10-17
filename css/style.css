@@ -1,0 +1,468 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: #d1d1d1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-image 0.8s ease-in-out;
+    filter: brightness(0.3) blur(3px);
+}
+
+.top-navbar {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-bottom: 2px solid #c5a059;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.logo h1 {
+    color: #c5a059;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-family: serif;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), var(--bg-image);
+}
+
+.nav-item:hover, .nav-item.active {
+    border-bottom-color: #c5a059;
+    color: #c5a059;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), var(--bg-image);
+}
+
+.main-wrapper {
+    flex: 1;
+    max-width: 1000px;
+    margin: 2rem auto;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-panel {
+    display: flex;
+    gap: 10px;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    backdrop-filter: blur(5px);
+}
+
+.search-panel input {
+    flex: 1;
+    padding: 10px 15px;
+    background: #0a0a0a;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.search-panel input:focus {
+    outline: none;
+    border-color: #c5a059;
+}
+
+.btn-elden {
+    padding: 10px 20px;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    color: #ccc;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-elden:hover {
+    background: #c5a059;
+    color: #000;
+    border-color: #c5a059;
+}
+
+/* Cajas de contenido */
+.wiki-box {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.wiki-title {
+    color: #e2e2e2;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.wiki-text {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.hidden-section {
+    display: none !important;
+}
+
+.status-bar {
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid #c5a059;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #c5a059;
+}
+.status-bar.hidden { display: none; }
+
+.placeholder {
+    text-align: center;
+    color: #666;
+    padding: 3rem;
+}
+
+.pokemon-card {
+    display: flex;
+    gap: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #555;
+    padding: 1.5rem;
+    border-radius: 5px;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pokemon-card img {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(197,160,89,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.pokemon-info h2 {
+    font-size: 2.5rem;
+    color: #c5a059;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    font-family: serif;
+}
+
+.pokemon-id {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.types {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.type-badge {
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #fff;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: #333;
+}
+
+.pokemon-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #444;
+    padding-bottom: 5px;
+}
+
+.detail-label { color: #888; font-size: 0.9rem; }
+.detail-value { color: #fff; font-weight: bold; font-size: 0.9rem; }
+
+.btn-save {
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    background-color: #c5a059;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.btn-save:hover { background-color: #dfb86c; }
+.btn-save:disabled { background-color: #555; color: #888; cursor: not-allowed; }
+
+/* Grilla de Pokémon */
+.pokemon-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.list-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.list-card:hover {
+    border-color: #c5a059;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
+}
+
+.list-card img {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
+}
+
+.list-card p {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    color: #ddd;
+}
+
+.list-card .list-id {
+    font-size: 0.75rem;
+    color: #777;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.team-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    min-width: 900px;
+}
+
+.team-table th, .team-table td {
+    border: 1px solid #444;
+    padding: 8px 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.team-table th {
+    background-color: rgba(197, 160, 89, 0.15);
+    color: #c5a059;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.team-table tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.02);
+}
+
+.team-table tr:hover {
+    background-color: rgba(197, 160, 89, 0.05);
+}
+
+.team-table img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+.team-table .btn-remove {
+    background: transparent;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+}
+
+.team-table .btn-remove:hover {
+    background: #ff4d4d;
+    color: #000;
+}
+
+.placeholder-small {
+    color: #666;
+    font-style: italic;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+}
+
+.gen-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.gen-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.gen-btn:hover {
+    color: #fff;
+    border-color: #c5a059;
+}
+
+/* Estilo del botón seleccionado */
+.gen-btn.active {
+    background: rgba(197, 160, 89, 0.15);
+    color: #c5a059;
+    border-color: #c5a059;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+}
+
+.games-accordion {
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #444;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.games-accordion summary {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #c5a059;
+    background: rgba(197, 160, 89, 0.1);
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.games-accordion summary:hover {
+    background: rgba(197, 160, 89, 0.2);
+}
+
+.games-accordion[open] summary {
+    border-bottom: 1px solid #444;
+}
+
+.games-list {
+    list-style: none;
+    padding: 10px 15px;
+    max-height: 150px; /* Para que no crezca demasiado */
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas para que se vea ordenado */
+    gap: 5px;
+}
+
+.games-list li {
+    font-size: 0.85rem;
+    color: #ddd;
+    text-transform: capitalize;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.games-list::-webkit-scrollbar {
+    width: 6px;
+}
+.games-list::-webkit-scrollbar-thumb {
+    background: #c5a059;
+    border-radius: 3px;
+}
